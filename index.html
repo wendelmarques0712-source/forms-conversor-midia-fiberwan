@@ -249,7 +249,6 @@
                     maxlength="13"
                     autocomplete="off"
                     oninput="mascaraTel(this)"
-                    onkeydown="mascaraTel(this)"
                     onpaste="setTimeout(function(){mascaraTel(document.getElementById('tf-telefone'))},10)"
                     required>
             </div>
@@ -304,20 +303,24 @@
 <script>
     const WEBHOOK_URL = "https://hook.us1.make.celonis.com/uljmbxy88n78zvdshu2arbwc7v7homn8";
 
-    // Máscara: 11 98352-9960 (DD DDDDD-DDDD)
+    // Máscara: 11 99999-0000 (DD DDDDD-DDDD)
     function mascaraTel(el) {
-        var n = el.value.replace(/\D/g, '').substring(0, 11);
+        var digits = el.value.replace(/\D/g, '').substring(0, 11);
         var v = '';
-        if (n.length === 0) {
+        if (digits.length === 0) {
             v = '';
-        } else if (n.length <= 2) {
-            v = n;
-        } else if (n.length <= 7) {
-            v = n.substring(0,2) + ' ' + n.substring(2);
+        } else if (digits.length <= 2) {
+            v = digits;
+        } else if (digits.length <= 7) {
+            v = digits.substring(0,2) + ' ' + digits.substring(2);
         } else {
-            v = n.substring(0,2) + ' ' + n.substring(2,7) + '-' + n.substring(7);
+            v = digits.substring(0,2) + ' ' + digits.substring(2,7) + '-' + digits.substring(7);
         }
-        el.value = v;
+        if (el.value !== v) {
+            var pos = el.selectionStart;
+            el.value = v;
+            try { el.setSelectionRange(pos, pos); } catch(e){}
+        }
     }
 
     function nextStep() {
