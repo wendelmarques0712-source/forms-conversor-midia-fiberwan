@@ -240,17 +240,7 @@
 
             <div class="tf-group">
                 <label for="tf-telefone">Telefone / WhatsApp</label>
-                <input
-                    type="text"
-                    inputmode="numeric"
-                    id="tf-telefone"
-                    name="telefone"
-                    placeholder="11 99999-0000"
-                    maxlength="13"
-                    autocomplete="off"
-                    oninput="mascaraTel(this)"
-                    onpaste="setTimeout(function(){mascaraTel(document.getElementById('tf-telefone'))},10)"
-                    required>
+                <input type="text" inputmode="numeric" id="tf-telefone" name="telefone" placeholder="11 99999-0000" maxlength="14" autocomplete="off" required>
             </div>
 
             <div class="tf-error" id="error-step-1">Preencha todos os campos corretamente para avançar.</div>
@@ -303,25 +293,7 @@
 <script>
     const WEBHOOK_URL = "https://hook.us1.make.celonis.com/uljmbxy88n78zvdshu2arbwc7v7homn8";
 
-    // Máscara: 11 99999-0000 (DD DDDDD-DDDD)
-    function mascaraTel(el) {
-        var digits = el.value.replace(/\D/g, '').substring(0, 11);
-        var v = '';
-        if (digits.length === 0) {
-            v = '';
-        } else if (digits.length <= 2) {
-            v = digits;
-        } else if (digits.length <= 7) {
-            v = digits.substring(0,2) + ' ' + digits.substring(2);
-        } else {
-            v = digits.substring(0,2) + ' ' + digits.substring(2,7) + '-' + digits.substring(7);
-        }
-        if (el.value !== v) {
-            var pos = el.selectionStart;
-            el.value = v;
-            try { el.setSelectionRange(pos, pos); } catch(e){}
-        }
-    }
+
 
     function nextStep() {
         var inputs = document.getElementById('step-1').querySelectorAll('input');
@@ -435,6 +407,15 @@
             errorElement.style.display = 'block';
         }
     }
+
+    // Máscara telefone: 11 99999-0000
+    document.getElementById('tf-telefone').addEventListener('input', function() {
+        var d = this.value.replace(/\D/g, '').slice(0, 11);
+        var v = d;
+        if (d.length > 7) v = d.slice(0,2) + ' ' + d.slice(2,7) + '-' + d.slice(7);
+        else if (d.length > 2) v = d.slice(0,2) + ' ' + d.slice(2);
+        this.value = v;
+    });
 </script>
 
 </body>
