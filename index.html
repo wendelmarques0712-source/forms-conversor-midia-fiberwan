@@ -6,7 +6,6 @@
 <title>FiberWan – Solicitação de Orçamento</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap');
-
     :root {
         --fw-vermelho: #e70404;
         --fw-vermelho-hover: #c90303;
@@ -17,7 +16,6 @@
         --fw-input-bg: #f4f5f7;
         --font-main: 'Sora', sans-serif;
     }
-
     .tf-card {
         font-family: var(--font-main);
         background: var(--fw-preto-card);
@@ -30,7 +28,6 @@
         color: var(--fw-branco);
         text-align: left;
     }
-
     .tf-sup-title {
         color: var(--fw-vermelho);
         font-size: 0.85rem;
@@ -39,20 +36,17 @@
         text-transform: uppercase;
         margin-bottom: 10px;
     }
-
     .tf-main-title {
         font-size: 1.4rem;
         font-weight: 700;
         margin-bottom: 14px;
         line-height: 1.3;
     }
-
     .tf-progress-container {
         display: flex;
         gap: 8px;
         margin-bottom: 18px;
     }
-
     .tf-progress-bar {
         height: 5px;
         flex: 1;
@@ -60,22 +54,14 @@
         border-radius: 3px;
         transition: background 0.4s ease;
     }
-
-    .tf-progress-bar.active {
-        background: var(--fw-vermelho);
-    }
-
+    .tf-progress-bar.active { background: var(--fw-vermelho); }
     .tf-step-title {
         font-size: 1.05rem;
         font-weight: 700;
         margin-bottom: 14px;
         color: var(--fw-branco);
     }
-
-    .tf-group {
-        margin-bottom: 12px;
-    }
-
+    .tf-group { margin-bottom: 12px; }
     .tf-group label {
         display: block;
         font-size: 0.9rem;
@@ -83,7 +69,6 @@
         margin-bottom: 6px;
         color: var(--fw-branco);
     }
-
     .tf-group input, .tf-group select {
         width: 100%;
         padding: 12px 14px;
@@ -99,38 +84,22 @@
         appearance: none;
         box-sizing: border-box;
     }
-
     .tf-group input::placeholder {
         font-weight: 400;
         color: #7a7a7a;
-        font-size: 1.05rem;
+        font-size: 1rem;
     }
-
     .tf-group input:focus, .tf-group select:focus {
         border-color: var(--fw-vermelho);
         background: var(--fw-branco);
     }
-
-    .tf-step {
-        display: none;
-        animation: fadeIn 0.4s ease;
-    }
-
-    .tf-step.active {
-        display: block;
-    }
-
+    .tf-step { display: none; animation: fadeIn 0.4s ease; }
+    .tf-step.active { display: block; }
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
     }
-
-    .tf-footer {
-        display: flex;
-        gap: 15px;
-        margin-top: 18px;
-    }
-
+    .tf-footer { display: flex; gap: 15px; margin-top: 18px; }
     .btn-tf {
         flex: 1;
         padding: 14px 16px;
@@ -143,72 +112,12 @@
         text-align: center;
         border: none;
     }
-
-    .btn-primary {
-        background: var(--fw-vermelho);
-        color: var(--fw-branco);
-    }
-
-    .btn-primary:hover:not(:disabled) {
-        background: var(--fw-vermelho-hover);
-        transform: translateY(-2px);
-    }
-
-    .btn-primary:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
-    }
-
-    .btn-secondary {
-        background: #1a1a1a;
-        color: var(--fw-cinza-texto);
-        border: 1px solid #333333;
-    }
-
-    .btn-secondary:hover {
-        background: #252525;
-        color: var(--fw-branco);
-    }
-
-    .tf-error {
-        color: var(--fw-vermelho);
-        font-size: 0.9rem;
-        margin-top: 5px;
-        display: none;
-        font-weight: 600;
-    }
-
-    .tf-success {
-        display: none;
-        text-align: center;
-        padding: 20px 0;
-        animation: fadeIn 0.5s ease;
-    }
-
-    .tf-success-icon {
-        width: 64px;
-        height: 64px;
-        background: var(--fw-vermelho);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 24px;
-        font-size: 2rem;
-    }
-
-    .tf-success h3 {
-        font-size: 1.6rem;
-        font-weight: 700;
-        margin-bottom: 12px;
-        color: var(--fw-branco);
-    }
-
-    .tf-success p {
-        color: var(--fw-cinza-texto);
-        font-size: 1rem;
-        line-height: 1.6;
-    }
+    .btn-primary { background: var(--fw-vermelho); color: var(--fw-branco); }
+    .btn-primary:hover:not(:disabled) { background: var(--fw-vermelho-hover); transform: translateY(-2px); }
+    .btn-primary:disabled { opacity: 0.7; cursor: not-allowed; }
+    .btn-secondary { background: #1a1a1a; color: var(--fw-cinza-texto); border: 1px solid #333333; }
+    .btn-secondary:hover { background: #252525; color: var(--fw-branco); }
+    .tf-error { color: var(--fw-vermelho); font-size: 0.9rem; margin-top: 5px; display: none; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -216,49 +125,36 @@
 <div class="tf-card" id="formulario">
     <div class="tf-sup-title">Solicitação de Orçamento</div>
     <div class="tf-main-title">Fale com um especialista FiberWan</div>
-
     <div class="tf-progress-container">
         <div class="tf-progress-bar active" id="bar-1"></div>
         <div class="tf-progress-bar" id="bar-2"></div>
     </div>
-
     <form id="tf-lead-form" novalidate>
-
-        <!-- ETAPA 1 -->
         <div class="tf-step active" id="step-1">
             <div class="tf-step-title">Dados de contato</div>
-
             <div class="tf-group">
                 <label for="tf-nome">Nome Completo</label>
                 <input type="text" id="tf-nome" name="nome" placeholder="Seu nome" required>
             </div>
-
             <div class="tf-group">
                 <label for="tf-email">E-mail Profissional</label>
                 <input type="email" id="tf-email" name="email" placeholder="email@empresa.com.br" required>
             </div>
-
             <div class="tf-group">
                 <label for="tf-telefone">Telefone / WhatsApp</label>
-                <input type="text" inputmode="numeric" id="tf-telefone" name="telefone" placeholder="11 99999-0000" maxlength="14" autocomplete="off" required>
+                <input type="tel" id="tf-telefone" name="telefone" placeholder="11 99999-0000" autocomplete="off" required>
             </div>
-
             <div class="tf-error" id="error-step-1">Preencha todos os campos corretamente para avançar.</div>
-
             <div class="tf-footer">
-                <button type="button" class="btn-tf btn-primary" onclick="nextStep()">Continuar</button>
+                <button type="button" class="btn-tf btn-primary" id="btn-next" onclick="nextStep()">Continuar</button>
             </div>
         </div>
-
-        <!-- ETAPA 2 -->
         <div class="tf-step" id="step-2">
             <div class="tf-step-title">Dados da empresa</div>
-
             <div class="tf-group">
                 <label for="tf-empresa">Nome da Empresa</label>
                 <input type="text" id="tf-empresa" name="empresa" placeholder="Sua empresa" required>
             </div>
-
             <div class="tf-group">
                 <label for="tf-segmento">Segmento de atuação</label>
                 <select id="tf-segmento" name="segmento" required>
@@ -272,161 +168,132 @@
                     <option>Outros</option>
                 </select>
             </div>
-
             <div class="tf-error" id="error-step-2">Preencha todos os campos antes de solicitar.</div>
-
             <div class="tf-footer">
                 <button type="button" class="btn-tf btn-secondary" onclick="prevStep()">Voltar</button>
                 <button type="button" class="btn-tf btn-primary" id="btn-submit" onclick="submitForm()">Solicitar</button>
             </div>
         </div>
-
     </form>
-
-    <div class="tf-success" id="tf-success">
-        <div class="tf-success-icon">✓</div>
-        <h3>Solicitação enviada!</h3>
-        <p>Recebemos seus dados e em breve um especialista FiberWan entrará em contato com você.</p>
-    </div>
 </div>
 
 <script>
-    const WEBHOOK_URL = "https://hook.us1.make.celonis.com/uljmbxy88n78zvdshu2arbwc7v7homn8";
+var WEBHOOK_URL = "https://hook.us1.make.celonis.com/uljmbxy88n78zvdshu2arbwc7v7homn8";
 
+// ── MÁSCARA DE TELEFONE ──────────────────────────────────────────────────────
+function fmtTel(v) {
+    var d = v.replace(/\D/g, '').slice(0, 11);
+    if (d.length > 7) return d.slice(0,2) + ' ' + d.slice(2,7) + '-' + d.slice(7);
+    if (d.length > 2) return d.slice(0,2) + ' ' + d.slice(2);
+    return d;
+}
 
+function aplicaMascara() {
+    var el = document.getElementById('tf-telefone');
+    if (!el) return;
+    var novo = fmtTel(el.value);
+    if (el.value !== novo) el.value = novo;
+}
 
-    function nextStep() {
-        var inputs = document.getElementById('step-1').querySelectorAll('input');
-        var errorElement = document.getElementById('error-step-1');
-        var isValid = true;
+// Tenta vincular por todos os meios possíveis
+window.addEventListener('load', function() {
+    var el = document.getElementById('tf-telefone');
+    if (!el) return;
+    el.addEventListener('input',  aplicaMascara);
+    el.addEventListener('keyup',  aplicaMascara);
+    el.addEventListener('change', aplicaMascara);
+    el.addEventListener('paste', function() { setTimeout(aplicaMascara, 10); });
+});
 
-        errorElement.innerText = "Preencha todos os campos corretamente para avançar.";
+// Fallback: polling a cada 100ms
+setInterval(aplicaMascara, 100);
+// ─────────────────────────────────────────────────────────────────────────────
 
-        inputs.forEach(function(input) {
-            if (!input.checkValidity()) {
-                isValid = false;
-            }
-            if (input.id === 'tf-telefone') {
-                var numbers = input.value.replace(/\D/g, '');
-                if (numbers.length > 0 && numbers.length < 11) {
-                    isValid = false;
-                    errorElement.innerText = "Preencha o telefone completo com DDD (11 dígitos).";
-                    input.style.borderColor = "var(--fw-vermelho)";
-                } else {
-                    input.style.borderColor = "transparent";
-                }
-            }
+function nextStep() {
+    var nome  = document.getElementById('tf-nome').value.trim();
+    var email = document.getElementById('tf-email').value.trim();
+    var tel   = document.getElementById('tf-telefone').value;
+    var digits = tel.replace(/\D/g, '');
+    var err   = document.getElementById('error-step-1');
+
+    if (!nome) { err.innerText = 'Preencha seu nome.'; err.style.display = 'block'; return; }
+    if (!email || !email.includes('@')) { err.innerText = 'Preencha um e-mail válido.'; err.style.display = 'block'; return; }
+    if (digits.length < 11) { err.innerText = 'Preencha o telefone completo com DDD (11 dígitos).'; err.style.display = 'block'; document.getElementById('tf-telefone').style.borderColor = 'var(--fw-vermelho)'; return; }
+
+    document.getElementById('tf-telefone').style.borderColor = 'transparent';
+    err.style.display = 'none';
+    document.getElementById('step-1').classList.remove('active');
+    document.getElementById('step-2').classList.add('active');
+    document.getElementById('bar-2').classList.add('active');
+}
+
+function prevStep() {
+    document.getElementById('step-2').classList.remove('active');
+    document.getElementById('step-1').classList.add('active');
+    document.getElementById('bar-2').classList.remove('active');
+}
+
+async function submitForm() {
+    var empresa  = document.getElementById('tf-empresa').value.trim();
+    var segmento = document.getElementById('tf-segmento').value;
+    var err      = document.getElementById('error-step-2');
+
+    if (!empresa || !segmento) { err.style.display = 'block'; return; }
+    err.style.display = 'none';
+
+    var btn = document.getElementById('btn-submit');
+    btn.disabled = true;
+    btn.innerText = 'Enviando...';
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var ip = '';
+    try { var r = await fetch('https://api.ipify.org?format=json'); var j = await r.json(); ip = j.ip || ''; } catch(e) {}
+
+    var tel = document.getElementById('tf-telefone').value;
+    var now = new Date();
+    var enviado_em = now.toLocaleDateString('pt-BR', {day:'2-digit',month:'long',year:'numeric',timeZone:'America/Sao_Paulo'}) + ' às ' + now.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'});
+
+    var payload = {
+        nome:            document.getElementById('tf-nome').value.trim(),
+        email:           document.getElementById('tf-email').value.trim(),
+        telefone:        tel,
+        telefone_digits: tel.replace(/\D/g, ''),
+        empresa:         empresa,
+        segmento:        segmento,
+        fbclid:          urlParams.get('fbclid') || '',
+        gclid:           urlParams.get('gclid') || '',
+        utm_source:      urlParams.get('utm_source') || '',
+        utm_medium:      urlParams.get('utm_medium') || '',
+        utm_campaign:    urlParams.get('utm_campaign') || '',
+        utm_term:        urlParams.get('utm_term') || '',
+        utm_content:     urlParams.get('utm_content') || '',
+        utm_id:          urlParams.get('utm_id') || '',
+        ip:              ip,
+        user_agent:      navigator.userAgent,
+        pagina_url:      window.location.href,
+        pagina_referrer: document.referrer || '',
+        enviado_em:      enviado_em
+    };
+
+    try {
+        var response = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
         });
-
-        if (isValid) {
-            errorElement.style.display = 'none';
-            document.getElementById('step-1').classList.remove('active');
-            document.getElementById('step-2').classList.add('active');
-            document.getElementById('bar-2').classList.add('active');
+        if (response.ok) {
+            window.top.location.href = "https://lp.fiberwan.com.br/obrigado-v2";
         } else {
-            errorElement.style.display = 'block';
+            throw new Error('Erro ' + response.status);
         }
+    } catch(e) {
+        console.error(e);
+        btn.disabled = false;
+        btn.innerText = 'Solicitar';
+        err.innerText = 'Erro ao enviar. Tente novamente.';
+        err.style.display = 'block';
     }
-
-    function prevStep() {
-        document.getElementById('step-2').classList.remove('active');
-        document.getElementById('step-1').classList.add('active');
-        document.getElementById('bar-2').classList.remove('active');
-    }
-
-    async function submitForm() {
-        var empresa = document.getElementById('tf-empresa').value.trim();
-        var segmento = document.getElementById('tf-segmento').value;
-        var errorElement = document.getElementById('error-step-2');
-
-        if (!empresa || !segmento) {
-            errorElement.style.display = 'block';
-            return;
-        }
-        errorElement.style.display = 'none';
-
-        var btnSubmit = document.getElementById('btn-submit');
-        btnSubmit.disabled = true;
-        btnSubmit.innerText = 'Enviando...';
-
-        var // Captura UTMs e parâmetros da URL
-        var urlParams = new URLSearchParams(window.location.search);
-
-        // IP via API pública
-        var ip = '';
-        try {
-            var ipResp = await fetch('https://api.ipify.org?format=json');
-            var ipData = await ipResp.json();
-            ip = ipData.ip || '';
-        } catch(e) { ip = ''; }
-
-        var telefoneRaw = document.getElementById('tf-telefone').value.replace(/\D/g, '');
-
-        var now = new Date();
-        var enviado_em = now.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'America/Sao_Paulo' }) + ' às ' + now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' });
-
-        payload = {
-            nome:            document.getElementById('tf-nome').value.trim(),
-            email:           document.getElementById('tf-email').value.trim(),
-            telefone:        document.getElementById('tf-telefone').value.trim(),
-            telefone_digits: telefoneRaw,
-            empresa:         empresa,
-            segmento:        segmento,
-            fbclid:          urlParams.get('fbclid') || '',
-            gclid:           urlParams.get('gclid') || '',
-            utm_source:      urlParams.get('utm_source') || '',
-            utm_medium:      urlParams.get('utm_medium') || '',
-            utm_campaign:    urlParams.get('utm_campaign') || '',
-            utm_term:        urlParams.get('utm_term') || '',
-            utm_content:     urlParams.get('utm_content') || '',
-            utm_id:          urlParams.get('utm_id') || '',
-            ip:              ip,
-            user_agent:      navigator.userAgent,
-            pagina_url:      window.location.href,
-            pagina_referrer: document.referrer || '',
-            enviado_em:      enviado_em
-        };
-
-        try {
-            var response = await fetch(WEBHOOK_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            if (response.ok) {
-                window.top.location.href = "https://lp.fiberwan.com.br/obrigado-v2";
-            } else {
-                throw new Error('Erro ' + response.status);
-            }
-        } catch (error) {
-            console.error('Erro ao enviar:', error);
-            btnSubmit.disabled = false;
-            btnSubmit.innerText = 'Solicitar';
-            errorElement.innerText = 'Erro ao enviar. Tente novamente em instantes.';
-            errorElement.style.display = 'block';
-        }
-    }
-
-    // Máscara telefone: 11 99999-0000
-    // Usa setInterval para garantir funcionamento em qualquer ambiente
-    var _telPrev = '';
-    function _fmtTel(v) {
-        var d = v.replace(/\D/g, '').slice(0, 11);
-        if (d.length > 7) return d.slice(0,2) + ' ' + d.slice(2,7) + '-' + d.slice(7);
-        if (d.length > 2) return d.slice(0,2) + ' ' + d.slice(2);
-        return d;
-    }
-    setInterval(function() {
-        var el = document.getElementById('tf-telefone');
-        if (!el) return;
-        if (el.value !== _telPrev) {
-            var formatted = _fmtTel(el.value);
-            if (el.value !== formatted) el.value = formatted;
-            _telPrev = el.value;
-        }
-    }, 50);
+}
 </script>
-
 </body>
 </html>
