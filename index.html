@@ -245,7 +245,10 @@ async function submitForm() {
     btn.disabled = true;
     btn.innerText = 'Enviando...';
 
-    var urlParams = new URLSearchParams(window.location.search);
+    // Decodifica URL mesmo com double-encoding
+    var rawSearch = window.location.search;
+    try { rawSearch = decodeURIComponent(rawSearch); } catch(e) {}
+    var urlParams = new URLSearchParams(rawSearch);
     var ip = '';
     try { var r = await fetch('https://api.ipify.org?format=json'); var j = await r.json(); ip = j.ip || ''; } catch(e) {}
 
