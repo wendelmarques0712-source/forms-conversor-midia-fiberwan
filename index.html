@@ -409,13 +409,23 @@
     }
 
     // Máscara telefone: 11 99999-0000
-    document.getElementById('tf-telefone').addEventListener('input', function() {
-        var d = this.value.replace(/\D/g, '').slice(0, 11);
-        var v = d;
-        if (d.length > 7) v = d.slice(0,2) + ' ' + d.slice(2,7) + '-' + d.slice(7);
-        else if (d.length > 2) v = d.slice(0,2) + ' ' + d.slice(2);
-        this.value = v;
-    });
+    // Usa setInterval para garantir funcionamento em qualquer ambiente
+    var _telPrev = '';
+    function _fmtTel(v) {
+        var d = v.replace(/\D/g, '').slice(0, 11);
+        if (d.length > 7) return d.slice(0,2) + ' ' + d.slice(2,7) + '-' + d.slice(7);
+        if (d.length > 2) return d.slice(0,2) + ' ' + d.slice(2);
+        return d;
+    }
+    setInterval(function() {
+        var el = document.getElementById('tf-telefone');
+        if (!el) return;
+        if (el.value !== _telPrev) {
+            var formatted = _fmtTel(el.value);
+            if (el.value !== formatted) el.value = formatted;
+            _telPrev = el.value;
+        }
+    }, 50);
 </script>
 
 </body>
