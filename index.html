@@ -374,13 +374,42 @@
         btnSubmit.disabled = true;
         btnSubmit.innerText = 'Enviando...';
 
-        var payload = {
-            nome:      document.getElementById('tf-nome').value.trim(),
-            email:     document.getElementById('tf-email').value.trim(),
-            telefone:  document.getElementById('tf-telefone').value.trim(),
-            empresa:   empresa,
-            segmento:  segmento,
-            data_hora: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
+        var // Captura UTMs e parâmetros da URL
+        var urlParams = new URLSearchParams(window.location.search);
+
+        // IP via API pública
+        var ip = '';
+        try {
+            var ipResp = await fetch('https://api.ipify.org?format=json');
+            var ipData = await ipResp.json();
+            ip = ipData.ip || '';
+        } catch(e) { ip = ''; }
+
+        var telefoneRaw = document.getElementById('tf-telefone').value.replace(/\D/g, '');
+
+        var now = new Date();
+        var enviado_em = now.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'America/Sao_Paulo' }) + ' às ' + now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' });
+
+        payload = {
+            nome:            document.getElementById('tf-nome').value.trim(),
+            email:           document.getElementById('tf-email').value.trim(),
+            telefone:        document.getElementById('tf-telefone').value.trim(),
+            telefone_digits: telefoneRaw,
+            empresa:         empresa,
+            segmento:        segmento,
+            fbclid:          urlParams.get('fbclid') || '',
+            gclid:           urlParams.get('gclid') || '',
+            utm_source:      urlParams.get('utm_source') || '',
+            utm_medium:      urlParams.get('utm_medium') || '',
+            utm_campaign:    urlParams.get('utm_campaign') || '',
+            utm_term:        urlParams.get('utm_term') || '',
+            utm_content:     urlParams.get('utm_content') || '',
+            utm_id:          urlParams.get('utm_id') || '',
+            ip:              ip,
+            user_agent:      navigator.userAgent,
+            pagina_url:      window.location.href,
+            pagina_referrer: document.referrer || '',
+            enviado_em:      enviado_em
         };
 
         try {
